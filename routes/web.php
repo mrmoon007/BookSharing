@@ -19,5 +19,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/show',[BookController::class,'show'])->name('show');
+Route::get('/admin', function () {
+    return view('backend.index');
+})->name('home');
 
 //jafsjajs
