@@ -39,7 +39,7 @@
                         <h6 class="collapse-header">Manage Books & All:</h6>
                         <a class="collapse-item" href="buttons.html">Books</a>
                         <a class="collapse-item" href="cards.html">Categories</a>
-                        <a class="collapse-item" href="cards.html">Authors</a>
+                        <a class="collapse-item" href="{{ route('Author.index') }}">Authors</a>
                         <a class="collapse-item" href="cards.html">Publishers</a>
                     </div>
                 </div>

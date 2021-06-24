@@ -9,9 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Admin</title>
 
     @include('backend.layouts.partials.style')
+    @yield('customStyle')
 
 </head>
 
@@ -25,7 +26,16 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-           @yield('content')
+             <!-- Main Content -->
+                <div id="content">
+
+                    @include('backend.layouts.partials.navbar')
+
+
+                    @yield('content')
+
+                </div>
+                <!-- End of Main Content -->
 
             @include('backend.layouts.partials.footer')
 
@@ -61,6 +71,10 @@
     </div>
 
     @include('backend.layouts.partials.script')
+
+    <script>
+        @yield('customScript')
+    </script>
 
 </body>
 
