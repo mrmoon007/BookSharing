@@ -23,4 +23,9 @@ Route::get('/admin', function () {
     return view('backend.index');
 })->name('home');
 
+Route::group(['prefix'=>'admin'], function(){
+    Route::get('/',);
+
+});
+
 //jafsjajs
