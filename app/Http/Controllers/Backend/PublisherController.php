@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Author;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class AuthorController extends Controller
+class PublisherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors=Author::all();
-        return view('backend.author.index', compact('authors'));
+        $publishers=Publisher::all();
+        return view('backend.publisher.index', compact('publishers'));
     }
 
     /**
@@ -38,20 +38,23 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
-        $validateData=$request->validate([
+         //return $request;
+         $validateData=$request->validate([
             'name' => 'required|string|max:255',
             //'link' => 'required|string|max:255',
             'description' => 'required',
+            'outlet' => 'required',
         ]);
 
         $data=array();
         $data['name']=$request->name;
         $data['link']=Str::slug($request->name);
         $data['description']=$request->description;
+        $data['address']=$request->address;
+        $data['outlet']=$request->outlet;
 
-        $author=Author::insert($data);
-        return redirect()->back()->with('message', 'Author created successfully!');
+        $publishers=Publisher::insert($data);
+        return redirect()->back()->with('message', 'publisher created successfully!');
     }
 
     /**
@@ -91,15 +94,13 @@ class AuthorController extends Controller
             'description' => 'required',
         ]);
 
-        //$author=Author::find($id);
-
         $data=array();
         $data['name']=$request->name;
         //$data['link']=Str::slug($request->name);
         $data['description']=$request->description;
 
-        $author=Author::find($id)->update($data);
-        session()->flash('message', 'Author updated successfully');
+        $publishers=Publisher::find($id)->update($data);
+        session()->flash('message', 'Publisher updated successfully');
         return redirect()->back();
     }
 
@@ -111,8 +112,8 @@ class AuthorController extends Controller
      */
     public function destroy($id)
     {
-        $author=Author::find($id)->delete();
-        session()->flash('message', 'Author deleted successfully');
+        $publishers=Publisher::find($id)->delete();
+        session()->flash('message', 'Publisher deleted successfully');
         return redirect()->back();
     }
 }

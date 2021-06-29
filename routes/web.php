@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AuthorController;
+use App\Http\Controllers\Backend\PublisherController;
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::get('/show',[BookController::class,'show'])->name('show');
 Route::group(['prefix'=>'admin'], function(){
     Route::get('/',[AdminController::class,'index']);
     Route::resource('/Author',AuthorController::class);
+    Route::resource('/Publisher',PublisherController::class);
 
 });
 

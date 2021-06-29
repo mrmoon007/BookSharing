@@ -40,7 +40,7 @@
                         <a class="collapse-item" href="buttons.html">Books</a>
                         <a class="collapse-item" href="cards.html">Categories</a>
                         <a class="collapse-item" href="{{ route('Author.index') }}">Authors</a>
-                        <a class="collapse-item" href="cards.html">Publishers</a>
+                        <a class="collapse-item" href="{{ route('Publisher.index') }}">Publishers</a>
                     </div>
                 </div>
             </li>
