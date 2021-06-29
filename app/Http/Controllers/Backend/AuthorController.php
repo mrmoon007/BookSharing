@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
+use App\Models\GroupbyModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class AuthorController extends Controller
 {
@@ -14,7 +18,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        return view('backend.author.index');
+        $authors=Author::all();
+        return view('backend.author.index', compact('authors'));
     }
 
     /**
@@ -35,7 +40,20 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request;
+        $validateData=$request->validate([
+            'name' => 'required|string|max:255',
+            //'link' => 'required|string|max:255',
+            'description' => 'required',
+        ]);
+
+        $data=array();
+        $data['name']=$request->name;
+        $data['link']=Str::slug($request->name);
+        $data['description']=$request->description;
+
+        $author=Author::insert($data);
+        return redirect()->back();
     }
 
     /**
