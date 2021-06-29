@@ -87,7 +87,21 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validateData=$request->validate([
+            'name' => 'required|string|max:255',
+            //'link' => 'required|string|max:255',
+            'description' => 'required',
+        ]);
+
+        //$author=Author::find($id);
+
+        $data=array();
+        $data['name']=$request->name;
+        //$data['link']=Str::slug($request->name);
+        $data['description']=$request->description;
+
+        $author=Author::find($id)->update($data);
+        return redirect()->back();
     }
 
     /**
@@ -98,6 +112,7 @@ class AuthorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $author=Author::find($id)->delete();
+        return redirect()->back();
     }
 }

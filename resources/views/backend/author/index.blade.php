@@ -56,6 +56,7 @@
                                                     <div class="modal-body">
                                                         <form method="POST" action="{{ route('Author.update',$author->id) }}">
                                                             @csrf
+                                                            @method('PUT')
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1" class="form-label">Author Name :</label>
                                                                 <input type="text" name="name" class="form-control" id="authonName" value="{{ $author->name }}" placeholder="Author name">
@@ -67,7 +68,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-primary">Save</button>
+                                                                <button type="submit" class="btn btn-primary">Update</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -78,6 +79,30 @@
                                         <!-- edit Modal -->
 
                                         <!-- delete Modal -->
+                                        <div class="modal fade" id="deleteModal{{ $author->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure to delete ??</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="POST" action="{{ route('Author.destroy',$author->id) }}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <div>
+                                                                {{ $author->name }} will be delete!!
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Conform</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- delete Modal -->
                                     </tr>
 
