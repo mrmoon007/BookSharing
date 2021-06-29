@@ -14,7 +14,9 @@
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal"
                 data-bs-target="#addModal"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Add Author</button>
         </div>
-
+        <div>
+            @include('backend.layouts.partials.message')
+        </div>
         <!-- Content Row -->
         <div class="row">
             <div class="col-12">

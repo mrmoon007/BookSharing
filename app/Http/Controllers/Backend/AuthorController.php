@@ -53,7 +53,7 @@ class AuthorController extends Controller
         $data['description']=$request->description;
 
         $author=Author::insert($data);
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Author created successfully!');
     }
 
     /**
@@ -101,6 +101,7 @@ class AuthorController extends Controller
         $data['description']=$request->description;
 
         $author=Author::find($id)->update($data);
+        session()->flash('message', 'Author updated successfully');
         return redirect()->back();
     }
 
@@ -113,6 +114,7 @@ class AuthorController extends Controller
     public function destroy($id)
     {
         $author=Author::find($id)->delete();
+        session()->flash('message', 'Author deleted successfully');
         return redirect()->back();
     }
 }
