@@ -41,14 +41,14 @@ class PublisherController extends Controller
          //return $request;
          $validateData=$request->validate([
             'name' => 'required|string|max:255',
-            //'link' => 'required|string|max:255',
+            'link' => 'nullable|url',
             'description' => 'required',
             'outlet' => 'required',
         ]);
 
         $data=array();
         $data['name']=$request->name;
-        $data['link']=Str::slug($request->name);
+        $data['link']=$request->link;
         $data['description']=$request->description;
         $data['address']=$request->address;
         $data['outlet']=$request->outlet;
@@ -90,14 +90,16 @@ class PublisherController extends Controller
     {
         $validateData=$request->validate([
             'name' => 'required|string|max:255',
-            //'link' => 'required|string|max:255',
+            'link' => 'nullable|url',
             'description' => 'required',
         ]);
 
         $data=array();
         $data['name']=$request->name;
-        //$data['link']=Str::slug($request->name);
+        $data['link']=$request->link;
         $data['description']=$request->description;
+        $data['address']=$request->address;
+        $data['outlet']=$request->outlet;
 
         $publishers=Publisher::find($id)->update($data);
         session()->flash('message', 'Publisher updated successfully');

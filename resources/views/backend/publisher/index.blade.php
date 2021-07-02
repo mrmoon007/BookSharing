@@ -31,9 +31,9 @@
                                 <tr>
                                     <th>SL</th>
                                     <th>Name</th>
-                                    {{-- <th>Link</th> --}}
-                                    <th>Address</th>
+                                    <th>Link</th>
                                     <th>Outlet</th>
+                                    <th>Address</th>
                                     <th>Description</th>
                                     <th>Manage</th>
                                 </tr>
@@ -43,7 +43,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $publisher->name }}</td>
-                                        {{-- <td>{{ $publisher->link }}</td> --}}
+                                        <td>{{ $publisher->link }}</td>
                                         <td>{{ $publisher->outlet }}</td>
                                         <td>{{ $publisher->address }}</td>
                                         <td>{{ $publisher->description }}</td>
